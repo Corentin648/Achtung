@@ -19,6 +19,11 @@ config/name="Achtung"
 run/main_scene="res://scenes/Player.tscn"
 config/icon="res://img/icon.png"
 
+[layer_names]
+
+2d_render/layer_1="player"
+2d_render/layer_2="trace"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
