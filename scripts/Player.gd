@@ -8,6 +8,7 @@ var compteurTrous
 var aleatoireTrou
 
 func _ready():
+	connect("hit", Global.Main, "_on_Player_hit")
 	compteurTrous = 0
 	Trace = load("res://scenes/Trace.tscn")
 	velocity.x = 200
@@ -19,6 +20,7 @@ func _physics_process(delta):
 	nouveau_trou()
 	$Body.set_position($Body.get_position() + velocity*delta)
 	if Input.is_action_pressed("ui_left"):
+		#print("c'est le drame")
 		$Body.rotate(-PI/50)
 		velocity = velocity.rotated(-PI/50).normalized()*200
 	if Input.is_action_pressed("ui_right"):
@@ -45,4 +47,5 @@ func nouveau_trou():
 func _on_Area2D_body_entered(body):
 	velocity.x = 0
 	velocity.y = 0
+	emit_signal("hit")
 	pass

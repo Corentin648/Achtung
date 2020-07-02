@@ -19,6 +19,10 @@ config/name="Achtung"
 run/main_scene="res://scenes/Main.tscn"
 config/icon="res://img/icon.png"
 
+[autoload]
+
+Global="*res://scripts/Global.gd"
+
 [layer_names]
 
 2d_render/layer_1="player"
