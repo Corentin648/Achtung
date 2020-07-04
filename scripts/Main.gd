@@ -15,6 +15,7 @@ func _ready():
 
 func _on_Menu_game_started():
 	var player = Player.instance()
+	player.droite = KEY_K
 	add_child(player)
 	pass # Replace with function body.
 	

@@ -7,7 +7,17 @@ var velocity = Vector2()
 var compteurTrous
 var aleatoireTrou
 
+var touche_gauche
+var touche_droite
+
 func _ready():
+	
+	# code permettant d'associer les touches au mouvement
+	var event = InputEventKey.new()
+	event.scancode = droite
+	InputMap.add_action("droite")
+	InputMap.action_add_event("droite", event)
+	
 	connect("hit", Global.Main, "_on_Player_hit")
 	compteurTrous = 0
 	Trace = load("res://scenes/Trace.tscn")
@@ -23,7 +33,7 @@ func _physics_process(delta):
 		#print("c'est le drame")
 		$Body.rotate(-PI/50)
 		velocity = velocity.rotated(-PI/50).normalized()*200
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("droite"):
 		$Body.rotate(PI/50)
 		velocity = velocity.rotated(PI/50).normalized()*200
 	pass
