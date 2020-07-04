@@ -34,6 +34,8 @@ func nouveau_trou():
 		aleatoireTrou = randf()
 		if aleatoireTrou <= 0.995:
 			var trace = Trace.instance()
+			var image = load("res://img/trace_rouge.png")
+			trace.get_node("Sprite").set_texture(image)
 			add_child(trace)
 			trace.position = Vector2($Body.get_position().x,$Body.get_position().y)
 		else:
