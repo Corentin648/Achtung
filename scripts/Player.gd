@@ -21,7 +21,7 @@ func _ready():
 	connect("hit", Global.Main, "_on_Player_hit")
 	compteurTrous = 0
 	Trace = load("res://scenes/Trace.tscn")
-	velocity.x = 200
+	velocity.x = 100
 	$Body.set_position(Vector2(100,100))
 	pass
 
@@ -32,10 +32,10 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_left"):
 		#print("c'est le drame")
 		$Body.rotate(-PI/50)
-		velocity = velocity.rotated(-PI/50).normalized()*200
+		velocity = velocity.rotated(-PI/50).normalized()*100
 	if Input.is_action_pressed("droite"):
 		$Body.rotate(PI/50)
-		velocity = velocity.rotated(PI/50).normalized()*200
+		velocity = velocity.rotated(PI/50).normalized()*100
 	pass
 	
 
@@ -50,7 +50,7 @@ func nouveau_trou():
 			trace.position = Vector2($Body.get_position().x,$Body.get_position().y)
 		else:
 			compteurTrous = 1
-	elif compteurTrous == 50:
+	elif compteurTrous == 30:
 		compteurTrous = 0
 	else:
 		compteurTrous += 1

@@ -25,6 +25,8 @@ func _ready():
 func _on_StartButton_pressed():
 	$NomJeuLabel.hide()
 	$StartButton.hide()
+	$NombreJoueursEdit.hide()
+	$NombreJoueursLabel.hide()
 	emit_signal("game_started")
 	pass
 

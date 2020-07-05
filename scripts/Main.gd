@@ -5,6 +5,7 @@ export (PackedScene) var Player
 func _ready():
 	Global.Main = self
 	Player = load("res://scenes/Player.tscn")
+	$Mur.hide()
 	pass # Replace with function body.
 
 
@@ -14,6 +15,7 @@ func _ready():
 
 
 func _on_Menu_game_started():
+	$Mur.show()
 	var player = Player.instance()
 	player.touche_droite = KEY_RIGHT
 	add_child(player)
