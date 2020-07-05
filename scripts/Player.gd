@@ -9,6 +9,7 @@ var aleatoireTrou
 
 var touche_gauche
 var touche_droite
+var points
 
 func _ready():
 	
@@ -19,10 +20,11 @@ func _ready():
 	rng.randomize()
 	
 	# code permettant d'associer les touches au mouvement
-	var event = InputEventKey.new()
-	event.scancode = touche_droite
-	InputMap.add_action("droite")
-	InputMap.action_add_event("droite", event)
+	var event_droite = InputEventKey.new()
+	event_droite.scancode = touche_droite
+	print(String(touche_droite))
+	InputMap.add_action(String(touche_droite))
+	InputMap.action_add_event(String(touche_droite), event_droite)
 	
 	connect("hit", Global.Main, "_on_Player_hit")
 	compteurTrous = 0
@@ -38,10 +40,9 @@ func _physics_process(delta):
 	nouveau_trou()
 	$Body.set_position($Body.get_position() + velocity*delta)
 	if Input.is_action_pressed("ui_left"):
-		#print("c'est le drame")
 		$Body.rotate(-PI/50)
 		velocity = velocity.rotated(-PI/50).normalized()*100
-	if Input.is_action_pressed("droite"):
+	if Input.is_action_pressed(String(touche_droite)):
 		$Body.rotate(PI/50)
 		velocity = velocity.rotated(PI/50).normalized()*100
 	pass

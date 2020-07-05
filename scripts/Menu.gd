@@ -23,10 +23,12 @@ func _ready():
 
 # Appelée quand l'utilisateur appuie sur Start
 func _on_StartButton_pressed():
-	$NomJeuLabel.hide()
-	$StartButton.hide()
-	$NombreJoueursEdit.hide()
-	$NombreJoueursLabel.hide()
+	for child in get_children():
+		child.hide()
+#	$NomJeuLabel.hide()
+#	$StartButton.hide()
+#	$NombreJoueursEdit.hide()
+#	$NombreJoueursLabel.hide()
 	emit_signal("game_started")
 	pass
 

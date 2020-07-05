@@ -1,6 +1,9 @@
 extends Node2D
 export (PackedScene) var Player
 
+var player
+var player2
+
 
 func _ready():
 	Global.Main = self
@@ -16,11 +19,16 @@ func _ready():
 
 func _on_Menu_game_started():
 	$Mur.show()
-	var player = Player.instance()
+	player = Player.instance()
+	player2 = Player.instance()
 	player.touche_droite = KEY_RIGHT
+	player.points = 3
 	add_child(player)
+	player2.touche_droite = KEY_Z
+	player2.points = 8
+	add_child(player2)
 	pass # Replace with function body.
 	
 func _on_Player_hit():
-	print("le test")
+	print(player2.points)
 	pass
