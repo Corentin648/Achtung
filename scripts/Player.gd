@@ -12,6 +12,12 @@ var touche_droite
 
 func _ready():
 	
+	var screen_width = ProjectSettings.get_setting("display/window/size/width")
+	var screen_height = ProjectSettings.get_setting("display/window/size/height")
+	
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	
 	# code permettant d'associer les touches au mouvement
 	var event = InputEventKey.new()
 	event.scancode = touche_droite
@@ -22,7 +28,9 @@ func _ready():
 	compteurTrous = 0
 	Trace = load("res://scenes/Trace.tscn")
 	velocity.x = 100
-	$Body.set_position(Vector2(100,100))
+	
+	# TODO : adapter à la taille de l'écran réel (bords jaunes)
+	$Body.set_position(Vector2(round(rng.randf_range(0.05, 0.95)*screen_width), round(rng.randf_range(0.05, 0.95)*screen_height)))
 	pass
 
 
