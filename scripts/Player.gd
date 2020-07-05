@@ -2,6 +2,7 @@ extends Node
 signal hit
 export (PackedScene) var Trace
 
+var pause
 
 var velocity = Vector2()
 var compteurTrous
@@ -12,6 +13,8 @@ var touche_droite
 var points
 
 func _ready():
+	
+	var pause = true
 	
 	var screen_width = ProjectSettings.get_setting("display/window/size/width")
 	var screen_height = ProjectSettings.get_setting("display/window/size/height")
@@ -29,7 +32,11 @@ func _ready():
 	connect("hit", Global.Main, "_on_Player_hit")
 	compteurTrous = 0
 	Trace = load("res://scenes/Trace.tscn")
-	velocity.x = 100
+	velocity.x = rng.randf_range(-1,1)
+	velocity.y = rng.randf_range(-1,1)
+	velocity = velocity.normalized()*100
+	
+	$Body.rotate(velocity.angle())
 	
 	# TODO : adapter à la taille de l'écran réel (bords jaunes)
 	$Body.set_position(Vector2(round(rng.randf_range(0.05, 0.95)*screen_width), round(rng.randf_range(0.05, 0.95)*screen_height)))
@@ -37,14 +44,15 @@ func _ready():
 
 
 func _physics_process(delta):
-	nouveau_trou()
-	$Body.set_position($Body.get_position() + velocity*delta)
-	if Input.is_action_pressed("ui_left"):
-		$Body.rotate(-PI/50)
-		velocity = velocity.rotated(-PI/50).normalized()*100
-	if Input.is_action_pressed(String(touche_droite)):
-		$Body.rotate(PI/50)
-		velocity = velocity.rotated(PI/50).normalized()*100
+	if pause == false:
+		nouveau_trou()
+		$Body.set_position($Body.get_position() + velocity*delta)
+		if Input.is_action_pressed("ui_left"):
+			$Body.rotate(-PI/50)
+			velocity = velocity.rotated(-PI/50).normalized()*100
+		if Input.is_action_pressed(String(touche_droite)):
+			$Body.rotate(PI/50)
+			velocity = velocity.rotated(PI/50).normalized()*100
 	pass
 	
 
@@ -69,4 +77,9 @@ func _on_Area2D_body_entered(body):
 	velocity.x = 0
 	velocity.y = 0
 	emit_signal("hit")
+	pass
+	
+func _input(event):
+	if Input.is_action_pressed("ui_accept"):
+		pause = !pause
 	pass
