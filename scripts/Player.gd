@@ -14,7 +14,7 @@ func _ready():
 	
 	# code permettant d'associer les touches au mouvement
 	var event = InputEventKey.new()
-	event.scancode = droite
+	event.scancode = touche_droite
 	InputMap.add_action("droite")
 	InputMap.action_add_event("droite", event)
 	
