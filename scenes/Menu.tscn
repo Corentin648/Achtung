@@ -2,16 +2,13 @@
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=2]
+[ext_resource path="res://scenes/GUI_Player.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 30
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=3]
 size = 30
 font_data = ExtResource( 1 )
 
@@ -22,6 +19,7 @@ script = ExtResource( 2 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -266.5
+margin_top = 30.0
 margin_right = 266.5
 margin_bottom = 61.0
 custom_fonts/font = SubResource( 1 )
@@ -32,38 +30,26 @@ __meta__ = {
 
 [node name="StartButton" type="Button" parent="."]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.833
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.833
 margin_left = -44.5
-margin_top = -21.5
+margin_top = -21.3
 margin_right = 44.5
-margin_bottom = 21.5
+margin_bottom = 21.7
 custom_fonts/font = SubResource( 2 )
 text = "Start"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NombreJoueursEdit" type="LineEdit" parent="."]
-margin_left = 344.585
-margin_top = 152.0
-margin_right = 419.585
-margin_bottom = 185.0
-placeholder_text = "1"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="GUI_Joueur_1" parent="." instance=ExtResource( 3 )]
 
-[node name="NombreJoueursLabel" type="Label" parent="."]
-margin_left = 12.9236
-margin_top = 147.329
-margin_right = 331.924
-margin_bottom = 184.329
-custom_fonts/font = SubResource( 3 )
-text = "Nombre de joueurs :"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="GUI_Joueur_2" parent="." instance=ExtResource( 3 )]
+offset = Vector2( 0, 100 )
+transform = Transform2D( 1, 0, 0, 1, 0, 100 )
+
+[node name="GUI_Joueur_3" parent="." instance=ExtResource( 3 )]
+offset = Vector2( 0, 200 )
+transform = Transform2D( 1, 0, 0, 1, 0, 200 )
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
-[connection signal="text_entered" from="NombreJoueursEdit" to="." method="_on_NombreJoueursEdit_text_entered"]
