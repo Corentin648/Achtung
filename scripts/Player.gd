@@ -4,6 +4,8 @@ export (PackedScene) var Trace
 
 var pause
 
+var image
+
 var velocity = Vector2()
 var compteurTrous
 var aleatoireTrou
@@ -57,11 +59,12 @@ func _physics_process(delta):
 	
 
 func nouveau_trou():
+	#var image
 	if compteurTrous == 0:
 		aleatoireTrou = randf()
 		if aleatoireTrou <= 0.995:
 			var trace = Trace.instance()
-			var image = load("res://img/trace_rouge.png")
+			#image = load("res://img/trace_rouge.png")
 			trace.get_node("Sprite").set_texture(image)
 			add_child(trace)
 			trace.position = Vector2($Body.get_position().x,$Body.get_position().y)

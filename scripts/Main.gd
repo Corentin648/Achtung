@@ -1,8 +1,9 @@
 extends Node2D
 export (PackedScene) var Player
 
-var player
+var player1
 var player2
+var player3
 
 
 func _ready():
@@ -19,16 +20,31 @@ func _ready():
 
 func _on_Menu_game_started():
 	$Mur.show()
-	player = Player.instance()
-	player2 = Player.instance()
-	player.touche_droite = KEY_RIGHT
-	player.points = 3
-	add_child(player)
-	player2.touche_droite = KEY_Z
-	player2.points = 8
-	add_child(player2)
-	pass # Replace with function body.
+	_ajout_joueurs()
+	pass
 	
 func _on_Player_hit():
-	print(player2.points)
+	#print(player2.points)
+	pass
+	
+
+func _ajout_joueurs():
+	if $Menu/GUI_Joueur_1/JoueurPresent.pressed:
+		player1 = Player.instance()
+		player1.touche_droite = KEY_RIGHT
+		player1.points = 0
+		player1.image = load("res://img/trace_rouge.png")
+		add_child(player1)
+	if $Menu/GUI_Joueur_2/JoueurPresent.pressed:
+		player2 = Player.instance()
+		player2.touche_droite = KEY_RIGHT
+		player2.points = 0
+		player2.image = load("res://img/trace_verte.png")
+		add_child(player2)
+	if $Menu/GUI_Joueur_3/JoueurPresent.pressed:
+		player3 = Player.instance()
+		player3.touche_droite = KEY_RIGHT
+		player3.points = 0
+		player3.image = load("res://img/trace_bleue.png")
+		add_child(player3)
 	pass
