@@ -23,14 +23,24 @@ func _ready():
 
 
 func _process(delta):
-	if nombre_morts == (nombre_joueurs - 1) && !game_over:
+	if nombre_morts >= (nombre_joueurs - 1) && !game_over:
 		for joueur in joueurs.keys():
 			joueur.vivant = false
 		game_over = true
 		
 	if Input.is_action_just_pressed("ui_accept") && game_over:
+		var svg = {}
 		for joueur in joueurs.keys():
+			svg[joueur] = joueurs[joueur]
 			joueur.queue_free()
+		joueurs.clear()
+		nombre_joueurs = 0
+		nombre_morts = 0
+		_ajout_joueurs()
+		for joueur in joueurs.keys():
+			joueurs[joueur] = svg[joueur]
+		print(joueurs)
+		game_over = false
 	pass
 
 
