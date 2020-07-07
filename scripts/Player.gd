@@ -64,7 +64,6 @@ func nouveau_trou():
 		aleatoireTrou = randf()
 		if aleatoireTrou <= 0.995:
 			var trace = Trace.instance()
-			#image = load("res://img/trace_rouge.png")
 			trace.get_node("Sprite").set_texture(image)
 			add_child(trace)
 			trace.position = Vector2($Body.get_position().x,$Body.get_position().y)
@@ -83,6 +82,6 @@ func _on_Area2D_body_entered(body):
 	pass
 	
 func _input(event):
-	if Input.is_action_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept"):
 		pause = !pause
 	pass
