@@ -3,6 +3,8 @@ signal hit
 export (PackedScene) var Trace
 
 var pause
+var vivant
+var nom
 
 var image
 
@@ -16,7 +18,8 @@ var points
 
 func _ready():
 	
-	var pause = true
+	pause = true
+	vivant = true
 	
 	var screen_width = ProjectSettings.get_setting("display/window/size/width")
 	var screen_height = ProjectSettings.get_setting("display/window/size/height")
@@ -27,7 +30,6 @@ func _ready():
 	# code permettant d'associer les touches au mouvement
 	var event_droite = InputEventKey.new()
 	event_droite.scancode = touche_droite
-	print(String(touche_droite))
 	InputMap.add_action(String(touche_droite))
 	InputMap.action_add_event(String(touche_droite), event_droite)
 	
@@ -46,7 +48,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	if pause == false:
+	if !pause && vivant:
 		nouveau_trou()
 		$Body.set_position($Body.get_position() + velocity*delta)
 		if Input.is_action_pressed("ui_left"):
@@ -59,7 +61,6 @@ func _physics_process(delta):
 	
 
 func nouveau_trou():
-	#var image
 	if compteurTrous == 0:
 		aleatoireTrou = randf()
 		if aleatoireTrou <= 0.995:
@@ -78,7 +79,9 @@ func nouveau_trou():
 func _on_Area2D_body_entered(body):
 	velocity.x = 0
 	velocity.y = 0
-	emit_signal("hit")
+	if vivant:
+		vivant = false
+		emit_signal("hit", self)
 	pass
 	
 func _input(event):
