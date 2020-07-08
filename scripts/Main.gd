@@ -18,6 +18,7 @@ func _ready():
 	Global.Main = self
 	Player = load("res://scenes/Player.tscn")
 	$Mur.hide()
+	$TableauScores.hide()
 	nombre_morts = 0
 	nombre_joueurs = 0
 	pass
@@ -42,20 +43,18 @@ func _process(delta):
 			for nom_svg in svg.keys():
 				if joueur.nom == nom_svg:
 					joueurs[joueur] = svg[nom_svg]
-		print(joueurs)
 		game_over = false
 	pass
 
 
 func _on_Menu_game_started():
 	$Mur.show()
+	$TableauScores.show()
 	_ajout_joueurs()
 	print(joueurs)
 	pass
 	
 func _on_Player_hit(player):
-	print("mort")
-	#player.vivant = false
 	nombre_morts += 1
 	for joueur in self.joueurs.keys():
 		if joueur != player && joueur.vivant:
