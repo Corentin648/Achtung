@@ -35,7 +35,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="trace" type="Sprite" parent="."]
+[node name="Couleur" type="Sprite" parent="."]
 position = Vector2( 799.499, 277.656 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 1 )

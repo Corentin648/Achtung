@@ -51,7 +51,10 @@ func _on_Menu_game_started():
 	$Mur.show()
 	$TableauScores.show()
 	_ajout_joueurs()
-	print(joueurs)
+	
+	# TODO : réfléchir à l'affichage des scores
+	for joueur in joueurs.keys():
+		var nom = joueur.nom
 	pass
 	
 func _on_Player_hit(player):
