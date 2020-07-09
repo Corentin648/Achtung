@@ -33,35 +33,36 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_accept") && game_over:
 		var svg = {}
 		for joueur in joueurs.keys():
-			svg[joueur.nom] = joueurs[joueur]
+			svg[joueur.couleur] = joueurs[joueur]
 			joueur.queue_free()
 		joueurs.clear()
 		nombre_joueurs = 0
 		nombre_morts = 0
 		_ajout_joueurs()
 		for joueur in joueurs.keys():
-			for nom_svg in svg.keys():
-				if joueur.nom == nom_svg:
-					joueurs[joueur] = svg[nom_svg]
+			for couleur_svg in svg.keys():
+				if joueur.couleur == couleur_svg:
+					joueurs[joueur] = svg[couleur_svg]
 		game_over = false
 	pass
 
 
 func _on_Menu_game_started():
 	$Mur.show()
-	$TableauScores.show()
+	$TableauScores/Goal.show()
+	$TableauScores/ValeurGoal.show()
 	_ajout_joueurs()
-	
-	# TODO : réfléchir à l'affichage des scores
-	for joueur in joueurs.keys():
-		var nom = joueur.nom
-	pass
 	
 func _on_Player_hit(player):
 	nombre_morts += 1
+	
 	for joueur in self.joueurs.keys():
-		if joueur != player && joueur.vivant:
-			joueurs[joueur] = joueurs[joueur] + 1
+		if joueur.vivant:
+			for child in $TableauScores.get_children():
+				if child is CanvasLayer:
+					if child.get_node("NomJoueur").get_text() == joueur.nom :
+						self.joueurs[joueur] = self.joueurs[joueur] + 1
+						child.get_node("LeScore").set_text(String(int(child.get_node("LeScore").get_text()) + 1))
 	pass
 	
 
@@ -72,30 +73,42 @@ func _ajout_joueurs():
 		player1.points = 0
 		player1.image = load("res://img/trace_rouge.png")
 		player1.nom = $Menu/GUI_Joueur_1/NomJoueurEdit.get_text()
+		player1.couleur = "rouge"
 		add_child(player1)
 		_mouvement_joueur_depart(player1)
 		self.joueurs[player1] = 0
 		nombre_joueurs += 1
+		$TableauScores/Joueur1/NomJoueur.set_text(player1.nom)
+		$TableauScores/Joueur1/Couleur.set_texture(player1.image)
+		$TableauScores/Joueur1.show()
 	if $Menu/GUI_Joueur_2/JoueurPresent.pressed:
 		player2 = Player.instance()
 		player2.touche_droite = KEY_RIGHT
 		player2.points = 30
 		player2.image = load("res://img/trace_verte.png")
 		player2.nom = $Menu/GUI_Joueur_2/NomJoueurEdit.get_text()
+		player2.couleur = "vert"
 		add_child(player2)
 		_mouvement_joueur_depart(player2)
 		self.joueurs[player2] = 0
 		nombre_joueurs += 1
+		$TableauScores/Joueur2/NomJoueur.set_text(player2.nom)
+		$TableauScores/Joueur2/Couleur.set_texture(player2.image)
+		$TableauScores/Joueur2.show()
 	if $Menu/GUI_Joueur_3/JoueurPresent.pressed:
 		player3 = Player.instance()
 		player3.touche_droite = KEY_RIGHT
 		player3.points = 0
 		player3.image = load("res://img/trace_bleue.png")
 		player3.nom = $Menu/GUI_Joueur_3/NomJoueurEdit.get_text()
+		player3.couleur = "bleu"
 		add_child(player3)
 		_mouvement_joueur_depart(player3)
 		self.joueurs[player3] = 0
 		nombre_joueurs += 1
+		$TableauScores/Joueur3/NomJoueur.set_text(player3.nom)
+		$TableauScores/Joueur3/Couleur.set_texture(player3.image)
+		$TableauScores/Joueur3.show()
 	pass
 
 	

@@ -7,6 +7,7 @@ var vivant
 var nom
 
 var image
+var couleur
 
 var velocity = Vector2()
 var compteurTrous
