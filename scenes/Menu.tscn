@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=2]
@@ -10,6 +10,14 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
 font_data = ExtResource( 1 )
 
 [node name="Menu" type="CanvasLayer"]
@@ -30,13 +38,13 @@ __meta__ = {
 
 [node name="StartButton" type="Button" parent="."]
 anchor_left = 0.5
-anchor_top = 0.833
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.833
+anchor_bottom = 1.0
 margin_left = -44.5
-margin_top = -21.3
+margin_top = -72.0
 margin_right = 44.5
-margin_bottom = 21.7
+margin_bottom = -29.0
 custom_fonts/font = SubResource( 2 )
 text = "Start"
 __meta__ = {
@@ -52,4 +60,29 @@ transform = Transform2D( 1, 0, 0, 1, 0, 100 )
 [node name="GUI_Joueur_3" parent="." instance=ExtResource( 3 )]
 offset = Vector2( 0, 200 )
 transform = Transform2D( 1, 0, 0, 1, 0, 200 )
+
+[node name="Goal" type="Label" parent="."]
+anchor_left = 0.336
+anchor_top = 0.791
+anchor_right = 0.336
+anchor_bottom = 0.791
+margin_left = -35.6525
+margin_top = -18.3979
+margin_right = 37.3475
+margin_bottom = 18.6021
+custom_fonts/font = SubResource( 3 )
+text = "But :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ValeurGoal" type="LineEdit" parent="."]
+margin_left = 436.232
+margin_top = 458.202
+margin_right = 518.232
+margin_bottom = 493.202
+custom_fonts/font = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
