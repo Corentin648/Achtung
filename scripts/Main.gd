@@ -29,27 +29,44 @@ func _process(delta):
 		for joueur in joueurs.keys():
 			joueur.vivant = false
 		game_over = true
+		if _fin_jeu():
+			print("fin du jeu")
 		
 	if Input.is_action_just_pressed("ui_accept") && game_over:
-		var svg = {}
-		for joueur in joueurs.keys():
-			svg[joueur.couleur] = joueurs[joueur]
-			joueur.queue_free()
-		joueurs.clear()
-		nombre_joueurs = 0
-		nombre_morts = 0
-		_ajout_joueurs()
-		for joueur in joueurs.keys():
-			for couleur_svg in svg.keys():
-				if joueur.couleur == couleur_svg:
-					joueurs[joueur] = svg[couleur_svg]
-		game_over = false
+		if !_fin_jeu():
+			var svg = {}
+			for joueur in joueurs.keys():
+				svg[joueur.couleur] = joueurs[joueur]
+				joueur.queue_free()
+			joueurs.clear()
+			nombre_joueurs = 0
+			nombre_morts = 0
+			_ajout_joueurs()
+			for joueur in joueurs.keys():
+				for couleur_svg in svg.keys():
+					if joueur.couleur == couleur_svg:
+						joueurs[joueur] = svg[couleur_svg]
+			game_over = false
+		elif _fin_jeu():
+			$Mur.hide()
+			$TableauScores.hide()
+			$Menu.show()
+			for joueur in joueurs.keys():
+				joueur.queue_free()
+			joueurs.clear()
+			nombre_joueurs = 0
+			nombre_morts = 0
+			game_over = false
+			for child in $TableauScores.get_children():
+				if child is CanvasLayer:
+					child.get_node("LeScore").set_text("0")
 	pass
 
 
 func _on_Menu_game_started():
 	$Mur.show()
 	$TableauScores/Goal.show()
+	$TableauScores/ValeurGoal.set_text($Menu/ValeurGoal.get_text())
 	$TableauScores/ValeurGoal.show()
 	_ajout_joueurs()
 	
@@ -116,4 +133,13 @@ func _mouvement_joueur_depart(joueur):
 	for i in range (20):
 		joueur.nouveau_trou()
 		joueur.get_node("Body").set_position(joueur.get_node("Body").get_position() + joueur.velocity*joueur.get_process_delta_time())
+	pass
+	
+
+func _fin_jeu():
+	var max_points = 0
+	for joueur in joueurs.keys():
+		if joueurs[joueur] > max_points + 1:
+			max_points = joueurs[joueur]
+	return max_points >= int($TableauScores/ValeurGoal.get_text())
 	pass

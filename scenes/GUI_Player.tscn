@@ -5,11 +5,11 @@
 [ext_resource path="res://img/checkbox.png" type="Texture" id=3]
 [ext_resource path="res://img/checkbox_checked.png" type="Texture" id=4]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 20
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 30
 font_data = ExtResource( 1 )
 
@@ -28,7 +28,8 @@ margin_left = -77.5
 margin_top = -23.348
 margin_right = 77.5
 margin_bottom = 23.652
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
+placeholder_text = "Joueur"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -38,7 +39,7 @@ margin_left = 131.82
 margin_top = 163.252
 margin_right = 381.82
 margin_bottom = 200.252
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Nom du joueur :"
 __meta__ = {
 "_edit_use_anchors_": false

@@ -16,25 +16,25 @@ font_data = ExtResource( 1 )
 script = ExtResource( 3 )
 
 [node name="Goal" type="Label" parent="."]
-margin_left = 846.54
-margin_top = 64.2662
-margin_right = 943.54
-margin_bottom = 113.266
+margin_left = 806.003
+margin_top = 133.806
+margin_right = 905.003
+margin_bottom = 182.806
 custom_fonts/font = SubResource( 1 )
-text = "Goal"
+text = "But :"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ValeurGoal" type="Label" parent="."]
-anchor_left = 0.873
-anchor_top = 0.23
-anchor_right = 0.873
-anchor_bottom = 0.23
-margin_left = -31.899
-margin_top = -18.332
-margin_right = 31.101
-margin_bottom = 18.668
+anchor_left = 0.938
+anchor_top = 0.271
+anchor_right = 0.938
+anchor_bottom = 0.271
+margin_left = -40.0044
+margin_top = -19.5552
+margin_right = 22.9956
+margin_bottom = 17.4448
 custom_fonts/font = SubResource( 2 )
 text = "100"
 __meta__ = {

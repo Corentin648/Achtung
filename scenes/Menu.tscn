@@ -82,6 +82,7 @@ margin_top = 458.202
 margin_right = 518.232
 margin_bottom = 493.202
 custom_fonts/font = SubResource( 4 )
+placeholder_text = "30"
 __meta__ = {
 "_edit_use_anchors_": false
 }

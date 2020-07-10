@@ -26,16 +26,28 @@ func _ready():
 
 # Appelée quand l'utilisateur appuie sur Start
 func _on_StartButton_pressed():
+	self.hide()
+	emit_signal("game_started")
+	pass
+	
+func hide():
 	for child in get_children():
 		if child is CanvasLayer:
 			for grandchild in child.get_children():
 				grandchild.hide()
 		else:
 			child.hide()
-	emit_signal("game_started")
 	pass
-
-
+	
+func show():
+	for child in get_children():
+		if child is CanvasLayer:
+			for grandchild in child.get_children():
+				grandchild.show()
+		else:
+			child.show()
+	pass
+	
 	
 	
 func _input(event):
