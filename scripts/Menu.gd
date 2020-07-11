@@ -16,6 +16,10 @@ func _ready():
 	$GUI_Joueur_1/CouleurJoueur.set_texture(trace_rouge)
 	$GUI_Joueur_2/CouleurJoueur.set_texture(trace_verte)
 	$GUI_Joueur_3/CouleurJoueur.set_texture(trace_bleue)
+	
+	$GUI_Joueur_1/Controls.set_text("L : Left ; R : Right")
+	$GUI_Joueur_2/Controls.set_text("L : J ; R : L")
+	$GUI_Joueur_3/Controls.set_text("L : A ; R : E")
 	pass
 
 

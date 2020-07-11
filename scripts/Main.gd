@@ -86,6 +86,7 @@ func _on_Player_hit(player):
 func _ajout_joueurs():
 	if $Menu/GUI_Joueur_1/JoueurPresent.pressed:
 		player1 = Player.instance()
+		player1.touche_gauche = KEY_LEFT
 		player1.touche_droite = KEY_RIGHT
 		player1.points = 0
 		player1.image = load("res://img/trace_rouge.png")
@@ -100,7 +101,8 @@ func _ajout_joueurs():
 		$TableauScores/Joueur1.show()
 	if $Menu/GUI_Joueur_2/JoueurPresent.pressed:
 		player2 = Player.instance()
-		player2.touche_droite = KEY_RIGHT
+		player2.touche_gauche = KEY_J
+		player2.touche_droite = KEY_L
 		player2.points = 30
 		player2.image = load("res://img/trace_verte.png")
 		player2.nom = $Menu/GUI_Joueur_2/NomJoueurEdit.get_text()
@@ -114,7 +116,8 @@ func _ajout_joueurs():
 		$TableauScores/Joueur2.show()
 	if $Menu/GUI_Joueur_3/JoueurPresent.pressed:
 		player3 = Player.instance()
-		player3.touche_droite = KEY_RIGHT
+		player3.touche_gauche = KEY_A
+		player3.touche_droite = KEY_E
 		player3.points = 0
 		player3.image = load("res://img/trace_bleue.png")
 		player3.nom = $Menu/GUI_Joueur_3/NomJoueurEdit.get_text()

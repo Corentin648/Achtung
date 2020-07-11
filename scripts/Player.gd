@@ -33,6 +33,10 @@ func _ready():
 	event_droite.scancode = touche_droite
 	InputMap.add_action(String(touche_droite))
 	InputMap.action_add_event(String(touche_droite), event_droite)
+	var event_gauche = InputEventKey.new()
+	event_gauche.scancode = touche_gauche
+	InputMap.add_action(String(touche_gauche))
+	InputMap.action_add_event(String(touche_gauche), event_gauche)
 	
 	connect("hit", Global.Main, "_on_Player_hit")
 	compteurTrous = 0
@@ -52,7 +56,7 @@ func _physics_process(delta):
 	if !pause && vivant:
 		nouveau_trou()
 		$Body.set_position($Body.get_position() + velocity*delta)
-		if Input.is_action_pressed("ui_left"):
+		if Input.is_action_pressed(String(touche_gauche)):
 			$Body.rotate(-PI/50)
 			velocity = velocity.rotated(-PI/50).normalized()*100
 		if Input.is_action_pressed(String(touche_droite)):

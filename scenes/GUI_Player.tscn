@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://img/trace.png" type="Texture" id=2]
@@ -15,6 +15,10 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 23
 font_data = ExtResource( 1 )
 
 [node name="GUI_Joueur" type="CanvasLayer"]
@@ -61,3 +65,14 @@ __meta__ = {
 [node name="CouleurJoueur" type="Sprite" parent="."]
 position = Vector2( 65.9102, 183.345 )
 texture = ExtResource( 2 )
+
+[node name="Controls" type="Label" parent="."]
+margin_left = 133.113
+margin_top = 208.069
+margin_right = 347.113
+margin_bottom = 237.069
+custom_fonts/font = SubResource( 4 )
+text = "Left : A ; Right : B"
+__meta__ = {
+"_edit_use_anchors_": false
+}
