@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://img/trace.png" type="Texture" id=2]
@@ -13,11 +13,14 @@ font_data = ExtResource( 1 )
 size = 30
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://Xolonium-Regular.ttf"
+
 [sub_resource type="DynamicFont" id=3]
 size = 30
-font_data = ExtResource( 1 )
+font_data = SubResource( 4 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 23
 font_data = ExtResource( 1 )
 
@@ -71,7 +74,7 @@ margin_left = 133.113
 margin_top = 208.069
 margin_right = 347.113
 margin_bottom = 237.069
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Left : A ; Right : B"
 __meta__ = {
 "_edit_use_anchors_": false

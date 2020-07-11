@@ -4,6 +4,7 @@ export (PackedScene) var Player
 var player1
 var player2
 var player3
+var gagnant
 
 var joueurs = {}
 
@@ -30,7 +31,9 @@ func _process(delta):
 			joueur.vivant = false
 		game_over = true
 		if _fin_jeu():
-			print("fin du jeu")
+			$TableauScores/Gagnant.show()
+			$TableauScores/LeGagnant.set_text(self.gagnant.nom)
+			$TableauScores/LeGagnant.show()
 		
 	if Input.is_action_just_pressed("ui_accept") && game_over:
 		if !_fin_jeu():
@@ -144,5 +147,6 @@ func _fin_jeu():
 	for joueur in joueurs.keys():
 		if joueurs[joueur] > max_points + 1:
 			max_points = joueurs[joueur]
+			self.gagnant = joueur
 	return max_points >= int($TableauScores/ValeurGoal.get_text())
 	pass
