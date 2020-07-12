@@ -47,8 +47,8 @@ func _ready():
 	
 	$Body.rotate(velocity.angle())
 	
-	# TODO : adapter à la taille de l'écran réel (bords jaunes)
-	$Body.set_position(Vector2(round(rng.randf_range(0.05, 0.95)*screen_width), round(rng.randf_range(0.05, 0.95)*screen_height)))
+	# La largeur de l'écran jaune vaut 710 px
+	$Body.set_position(Vector2(round(rng.randf_range(0.1, 0.9)*710), round(rng.randf_range(0.1, 0.9)*screen_height)))
 	pass
 
 
