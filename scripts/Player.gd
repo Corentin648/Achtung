@@ -57,11 +57,11 @@ func _physics_process(delta):
 		nouveau_trou()
 		$Body.set_position($Body.get_position() + velocity*delta)
 		if Input.is_action_pressed(String(touche_gauche)):
-			$Body.rotate(-PI/50)
-			velocity = velocity.rotated(-PI/50).normalized()*100
+			$Body.rotate(-PI/75)
+			velocity = velocity.rotated(-PI/75).normalized()*100
 		if Input.is_action_pressed(String(touche_droite)):
-			$Body.rotate(PI/50)
-			velocity = velocity.rotated(PI/50).normalized()*100
+			$Body.rotate(PI/75)
+			velocity = velocity.rotated(PI/75).normalized()*100
 	pass
 	
 

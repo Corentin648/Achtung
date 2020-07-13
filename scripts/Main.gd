@@ -54,6 +54,7 @@ func _process(delta):
 			$Mur.hide()
 			$TableauScores.hide()
 			$Menu.show()
+			$Menu/ChampsIncomplets.hide()
 			for joueur in joueurs.keys():
 				joueur.queue_free()
 			joueurs.clear()
