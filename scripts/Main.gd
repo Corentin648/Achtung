@@ -66,14 +66,15 @@ func _process(delta):
 					child.get_node("LeScore").set_text("0")
 	pass
 
-
 func _on_Menu_game_started():
 	$Mur.show()
 	$TableauScores/Goal.show()
 	$TableauScores/ValeurGoal.set_text($Menu/ValeurGoal.get_text())
 	$TableauScores/ValeurGoal.show()
 	_ajout_joueurs()
-	
+	pass
+
+# Mise à jour du nombre de points
 func _on_Player_hit(player):
 	nombre_morts += 1
 	
@@ -85,8 +86,8 @@ func _on_Player_hit(player):
 						self.joueurs[joueur] = self.joueurs[joueur] + 1
 						child.get_node("LeScore").set_text(String(int(child.get_node("LeScore").get_text()) + 1))
 	pass
-	
 
+# Création des noeud associés aux joueurs et initialisation
 func _ajout_joueurs():
 	if $Menu/GUI_Joueur_1/JoueurPresent.pressed:
 		player1 = Player.instance()
@@ -135,7 +136,8 @@ func _ajout_joueurs():
 		$TableauScores/Joueur3.show()
 	pass
 
-	
+
+# Ajout de 20 traces au départ pour voir la direction du joueur
 func _mouvement_joueur_depart(joueur):
 	for i in range (20):
 		joueur.nouveau_trou()
@@ -143,6 +145,7 @@ func _mouvement_joueur_depart(joueur):
 	pass
 	
 
+# On regarde si un joueur a atteint le but
 func _fin_jeu():
 	var max_points = 0
 	for joueur in joueurs.keys():

@@ -28,7 +28,7 @@ func _ready():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	
-	# code permettant d'associer les touches au mouvement
+	# Code permettant d'associer les touches au mouvement
 	var event_droite = InputEventKey.new()
 	event_droite.scancode = touche_droite
 	InputMap.add_action(String(touche_droite))
@@ -65,6 +65,7 @@ func _physics_process(delta):
 	pass
 	
 
+# Ajout ou non d'un trou à chaque frame
 func nouveau_trou():
 	if compteurTrous == 0:
 		aleatoireTrou = randf()
