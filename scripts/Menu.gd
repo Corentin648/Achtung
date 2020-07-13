@@ -7,11 +7,8 @@ var trace_verte = load("res://img/trace_verte.png")
 var trace_bleue = load("res://img/trace_bleue.png")
 
 
-func _ready():	
-	var event = InputEventKey.new()
-	event.scancode = KEY_T
-	InputMap.add_action('test')
-	InputMap.action_add_event('test', event)
+func _ready():
+	$ChampsIncomplets.hide()
 	
 	$GUI_Joueur_1/CouleurJoueur.set_texture(trace_rouge)
 	$GUI_Joueur_2/CouleurJoueur.set_texture(trace_verte)
@@ -30,8 +27,15 @@ func _ready():
 
 # Appelée quand l'utilisateur appuie sur Start
 func _on_StartButton_pressed():
-	self.hide()
-	emit_signal("game_started")
+	var pas_de_score = $ValeurGoal.get_text().length() == 0
+	var pas_de_nom_1 = $GUI_Joueur_1/JoueurPresent.pressed && $GUI_Joueur_1/NomJoueurEdit.get_text().length() == 0 
+	var pas_de_nom_2 = $GUI_Joueur_2/JoueurPresent.pressed && $GUI_Joueur_2/NomJoueurEdit.get_text().length() == 0 
+	var pas_de_nom_3 = $GUI_Joueur_3/JoueurPresent.pressed && $GUI_Joueur_3/NomJoueurEdit.get_text().length() == 0  
+	if pas_de_nom_1 || pas_de_nom_2 || pas_de_nom_3 || pas_de_score:
+		$ChampsIncomplets.show()
+	else:
+		self.hide()
+		emit_signal("game_started")
 	pass
 	
 func hide():
@@ -52,8 +56,3 @@ func show():
 			child.show()
 	pass
 	
-	
-	
-func _input(event):
-	if event.is_action_pressed('test'):
-		print('Test Worked!')
