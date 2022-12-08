@@ -8,7 +8,7 @@ var trace_bleue = load("res://img/trace_bleue.png")
 
 
 func _ready():
-	$ChampsIncomplets.hide()
+	$AlerteChampsIncomplets.hide()
 	
 	$GUI_Joueur_1/CouleurJoueur.set_texture(trace_rouge)
 	$GUI_Joueur_2/CouleurJoueur.set_texture(trace_verte)
@@ -32,7 +32,7 @@ func _on_StartButton_pressed():
 	var pas_de_nom_2 = $GUI_Joueur_2/JoueurPresent.pressed && $GUI_Joueur_2/NomJoueurEdit.get_text().length() == 0 
 	var pas_de_nom_3 = $GUI_Joueur_3/JoueurPresent.pressed && $GUI_Joueur_3/NomJoueurEdit.get_text().length() == 0  
 	if pas_de_nom_1 || pas_de_nom_2 || pas_de_nom_3 || pas_de_score:
-		$ChampsIncomplets.show()
+		$AlerteChampsIncomplets.show()
 	else:
 		self.hide()
 		emit_signal("game_started")

@@ -36,9 +36,6 @@ margin_right = 266.5
 margin_bottom = 61.0
 custom_fonts/font = SubResource( 1 )
 text = "Achtung, die Kurve !"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="StartButton" type="Button" parent="."]
 anchor_left = 0.5
@@ -51,9 +48,6 @@ margin_right = 44.5
 margin_bottom = -29.0
 custom_fonts/font = SubResource( 2 )
 text = "Start"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GUI_Joueur_1" parent="." instance=ExtResource( 3 )]
 
@@ -91,14 +85,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ChampsIncomplets" type="Label" parent="."]
+[node name="AlerteChampsIncomplets" type="Label" parent="."]
 margin_left = 580.268
 margin_top = 533.744
 margin_right = 960.268
 margin_bottom = 562.744
 custom_fonts/font = SubResource( 5 )
 text = "Il faut remplir tous les champs !"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]

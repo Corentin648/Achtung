@@ -37,9 +37,6 @@ margin_right = 77.5
 margin_bottom = 23.652
 custom_fonts/font = SubResource( 1 )
 placeholder_text = "Joueur"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="NomJoueurLabel" type="Label" parent="."]
 margin_left = 131.82
@@ -58,9 +55,9 @@ margin_top = 166.252
 margin_right = 763.492
 margin_bottom = 238.252
 rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 3 )
 custom_icons/checked = ExtResource( 4 )
 custom_icons/unchecked = ExtResource( 3 )
-custom_fonts/font = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
